@@ -1,0 +1,33 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @person.name
+%p
+  %b Gender:
+  = @person.gender
+%p
+  %b Nickname:
+  = @person.nickname
+- if @person.maiden_name
+  %p
+    %b MaidenName:
+    = @person.maiden_name
+%p
+  %b Birthdate:
+  = @person.birth_date
+%p
+  %b Deathdate:
+  = @person.death_date
+- if @person.mother
+  %p
+    %b Mother:
+    = @person.mother.name
+- if @person.father
+  %p
+    %b Father:
+    = @person.father.name
+
+
+= link_to 'Edit', edit_person_path(@person)
+\|
+= link_to 'Back', people_path
