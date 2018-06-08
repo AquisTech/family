@@ -9,8 +9,8 @@
     = f.label :person
     = f.collection_select :person, Person.all, :id, :name
   .field
-    = f.label :relationship_type
-    = f.collection_select :relationship_type, RelationshipType.all, :id, :name_and_inverse_name
+    = f.label :relation
+    = f.collection_select :relation, Relation.all, :id, :name_and_inverse_name
   .field
     = f.label :related_person
     = f.collection_select :related_person, Person.all, :id, :name

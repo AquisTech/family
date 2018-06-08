@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :relationships
-  resources :relationship_types
+  resources :relations
   resources :people
   get 'home/index'
   root :to => 'home#index'

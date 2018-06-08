@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_221325) do
+ActiveRecord::Schema.define(version: 2018_06_08_020853) do
 
   create_table "people", force: :cascade do |t|
     t.string "name"
@@ -27,11 +27,22 @@ ActiveRecord::Schema.define(version: 2018_06_07_221325) do
     t.index ["mother_id"], name: "index_people_on_mother_id"
   end
 
-  create_table "relationship_types", force: :cascade do |t|
+  create_table "relations", force: :cascade do |t|
     t.string "name"
     t.string "inverse_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "relation_id"
+    t.integer "person_id"
+    t.integer "related_person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_relationships_on_person_id"
+    t.index ["related_person_id"], name: "index_relationships_on_related_person_id"
+    t.index ["relation_id"], name: "index_relationships_on_relation_id"
   end
 
 end
