@@ -3,6 +3,7 @@ require 'test_helper'
 class RelationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @relation = relations(:one)
+    @relation_params = relations(:one).attributes.except('created_at', 'updated_at')
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class RelationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create relation" do
     assert_difference('Relation.count') do
-      post relations_url, params: { relation: {  } }
+      post relations_url, params: { relation: @relation_params }
     end
 
     assert_redirected_to relation_url(Relation.last)
@@ -34,7 +35,7 @@ class RelationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update relation" do
-    patch relation_url(@relation), params: { relation: {  } }
+    patch relation_url(@relation), params: { relation: @relation_params }
     assert_redirected_to relation_url(@relation)
   end
 

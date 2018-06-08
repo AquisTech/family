@@ -5,10 +5,20 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  relation: one
-  person: one
-  related_person: two
+  name: 'Martin'
+  nickname: 'Mart'
+  maiden_name: ''
+  birth_date: '2018-06-13'
+  gender: 'Male'
 two:
-  relation: one
-  person: one
-  related_person: two
+  name: 'Felly'
+  nickname: 'Fel'
+  maiden_name: ''
+  birth_date: '2018-06-13'
+  gender: 'Female'
+child:
+  name: 'Charlie'
+  nickname: 'Cha'
+  maiden_name: ''
+  birth_date: '2018-06-13'
+  gender: 'Male'

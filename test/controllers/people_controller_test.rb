@@ -3,6 +3,9 @@ require 'test_helper'
 class PeopleControllerTest < ActionDispatch::IntegrationTest
   setup do
     @person = people(:one)
+    @person_params = people(:child).attributes.except('created_at', 'updated_at')
+    @person_params[:mother_id] = people(:two)
+    @person_params[:father_id] = people(:one)
   end
 
   test "should get index" do
@@ -17,7 +20,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
   test "should create person" do
     assert_difference('Person.count') do
-      post people_url, params: { person: {  } }
+      post people_url, params: { person: @person_params }
     end
 
     assert_redirected_to person_url(Person.last)
@@ -34,7 +37,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update person" do
-    patch person_url(@person), params: { person: {  } }
+    patch person_url(@person), params: { person: @person_params }
     assert_redirected_to person_url(@person)
   end
 

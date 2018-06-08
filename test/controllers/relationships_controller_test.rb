@@ -3,6 +3,12 @@ require 'test_helper'
 class RelationshipsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @relationship = relationships(:one)
+    @person = @relationship.person
+    @relationship_params = {
+      relation_id: relations(:one).id,
+      person_id: people(:one).id,
+      related_person_id: people(:two).id
+    }
   end
 
   test "should get index" do
@@ -17,7 +23,7 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create relationship" do
     assert_difference('Relationship.count') do
-      post relationships_url, params: { relationship: {  } }
+      post relationships_url, params: { relationship: @relationship_params }
     end
 
     assert_redirected_to relationship_url(Relationship.last)
@@ -34,7 +40,7 @@ class RelationshipsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update relationship" do
-    patch relationship_url(@relationship), params: { relationship: {  } }
+    patch relationship_url(@relationship), params: { relationship: @relationship_params }
     assert_redirected_to relationship_url(@relationship)
   end
 
