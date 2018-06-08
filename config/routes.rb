@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :relationship_types
   resources :people
   get 'home/index'
   root :to => 'home#index'

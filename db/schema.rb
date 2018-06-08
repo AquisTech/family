@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_194838) do
+ActiveRecord::Schema.define(version: 2018_06_07_221325) do
 
   create_table "people", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2018_06_07_194838) do
     t.datetime "updated_at", null: false
     t.index ["father_id"], name: "index_people_on_father_id"
     t.index ["mother_id"], name: "index_people_on_mother_id"
+  end
+
+  create_table "relationship_types", force: :cascade do |t|
+    t.string "name"
+    t.string "inverse_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
