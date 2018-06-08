@@ -10,32 +10,32 @@ class RelationsTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Relationship Types"
   end
 
-  test "creating a Relationship type" do
+  test "creating a Relation" do
     visit relations_url
     click_on "New Relationship Type"
 
-    click_on "Create Relationship type"
+    click_on "Create Relation"
 
-    assert_text "Relationship type was successfully created"
+    assert_text "Relation was successfully created"
     click_on "Back"
   end
 
-  test "updating a Relationship type" do
+  test "updating a Relation" do
     visit relations_url
     click_on "Edit", match: :first
 
-    click_on "Update Relationship type"
+    click_on "Update Relation"
 
-    assert_text "Relationship type was successfully updated"
+    assert_text "Relation was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Relationship type" do
+  test "destroying a Relation" do
     visit relations_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Relationship type was successfully destroyed"
+    assert_text "Relation was successfully destroyed"
   end
 end
