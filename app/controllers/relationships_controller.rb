@@ -1,34 +1,35 @@
 class RelationshipsController < ApplicationController
+  before_action :set_person
   before_action :set_relationship, only: [:show, :edit, :update, :destroy]
 
-  # GET /relationships
-  # GET /relationships.json
+  # GET /people/1/relationships
+  # GET /people/1/relationships.json
   def index
-    @relationships = Relationship.all
+    @relationships = Relationship.where(person_id: @person.id).or(Relationship.where(related_person_id: @person.id))
   end
 
-  # GET /relationships/1
-  # GET /relationships/1.json
+  # GET /people/1/relationships/1
+  # GET /people/1/relationships/1.json
   def show
   end
 
-  # GET /relationships/new
+  # GET /people/1/relationships/new
   def new
-    @relationship = Relationship.new
+    @relationship = @person.relationships.new
   end
 
-  # GET /relationships/1/edit
+  # GET /people/1/relationships/1/edit
   def edit
   end
 
-  # POST /relationships
-  # POST /relationships.json
+  # POST /people/1/relationships
+  # POST /people/1/relationships.json
   def create
-    @relationship = Relationship.new(relationship_params)
+    @relationship = @person.relationships.new(relationship_params)
 
     respond_to do |format|
       if @relationship.save
-        format.html { redirect_to @relationship, notice: 'Relationship was successfully created.' }
+        format.html { redirect_to [@person, @relationship], notice: 'Relationship was successfully created.' }
         format.json { render :show, status: :created, location: @relationship }
       else
         format.html { render :new }
@@ -37,12 +38,12 @@ class RelationshipsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /relationships/1
-  # PATCH/PUT /relationships/1.json
+  # PATCH/PUT /people/1/relationships/1
+  # PATCH/PUT /people/1/relationships/1.json
   def update
     respond_to do |format|
       if @relationship.update(relationship_params)
-        format.html { redirect_to @relationship, notice: 'Relationship was successfully updated.' }
+        format.html { redirect_to [@person, @relationship], notice: 'Relationship was successfully updated.' }
         format.json { render :show, status: :ok, location: @relationship }
       else
         format.html { render :edit }
@@ -51,24 +52,28 @@ class RelationshipsController < ApplicationController
     end
   end
 
-  # DELETE /relationships/1
-  # DELETE /relationships/1.json
+  # DELETE /people/1/relationships/1
+  # DELETE /people/1/relationships/1.json
   def destroy
     @relationship.destroy
     respond_to do |format|
-      format.html { redirect_to relationships_url, notice: 'Relationship was successfully destroyed.' }
+      format.html { redirect_to person_relationships_url(@person), notice: 'Relationship was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_person
+      @person = Person.find(params[:person_id])
+    end
+
     def set_relationship
-      @relationship = Relationship.find(params[:id])
+      @relationship = Relationship.where(person_id: @person.id).or(Relationship.where(related_person_id: @person.id)).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relationship_params
-      params.require(:relationship).permit(:person_id, :relation_id, :related_person_id)
+      params.require(:relationship).permit(:relation_id, :related_person_id)
     end
 end

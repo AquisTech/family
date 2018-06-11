@@ -1,9 +1,8 @@
-%h1 Listing relationships
+%h1 Listing relationships for #{@person.name}
 
 %table
   %thead
     %tr
-      %th Person
       %th Relation
       %th Related person
       %th
@@ -11,15 +10,30 @@
       %th
 
   %tbody
+    - [@person.mother, @person.father].compact.each do |parent|
+      %tr
+        %td= parent.gender == 'Male' ? 'Father' : 'Mother'
+        %td= link_to parent.name, person_path(parent)
+        %td
+        %td
+        %td
+    - @person.children.each do |person|
+      %tr
+        %td= person.gender == 'Male' ? 'Son' : 'Daughter'
+        %td= link_to person.name, person_path(person)
+        %td
+        %td
+        %td
     - @relationships.each do |relationship|
       %tr
-        %td= relationship.person.name
-        %td= relationship.relation.name_and_inverse_name
-        %td= relationship.related_person.name
-        %td= link_to 'Show', relationship
-        %td= link_to 'Edit', edit_relationship_path(relationship)
-        %td= link_to 'Destroy', relationship, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= relationship.applicable_relation_name(@person)
+        %td= link_to relationship.relative_of(@person).name, person_path(relationship.relative_of(@person))
+        %td= link_to 'Show Relationship', person_relationship_path(@person, relationship)
+        %td= link_to 'Edit Relationship', edit_person_relationship_path(@person, relationship)
+        %td= link_to 'Remove Relationship', person_relationship_path(@person, relationship), :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Relationship', new_relationship_path
+= link_to 'New Relationship', new_person_relationship_path(@person)
+\|
+= link_to 'Back', edit_person_path(@person)
