@@ -9,8 +9,8 @@
       %th MaidenName
       %th Birthdate
       %th Deathdate
-      %th Mother
-      %th Father
+      %th Contact Number
+      %th Whatsapp Number
       %th
       %th
       %th
@@ -30,9 +30,9 @@
         %td
           = person.death_date
         %td
-          = person.mother.try(:name)
+          = person.contact_numbers
         %td
-          = person.father.try(:name)
+          = person.whatsapp_number
         %td= link_to 'Show', person
         %td= link_to 'Edit', edit_person_path(person)
         %td= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }

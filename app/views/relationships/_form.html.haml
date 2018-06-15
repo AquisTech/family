@@ -7,7 +7,7 @@
           %li= message
   .field
     = f.label :relation
-    = f.collection_select :relation_id, Relation.all, :id, :name_and_inverse_name
+    = f.collection_select :relation_id, Relation.all, :id, :name
   .field
     = f.label :related_person
     = f.collection_select :related_person_id, Person.all, :id, :name

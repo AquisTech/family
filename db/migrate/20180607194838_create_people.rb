@@ -7,8 +7,8 @@ class CreatePeople < ActiveRecord::Migration[5.2]
       t.datetime :birth_date
       t.datetime :death_date
       t.string :gender
-      t.belongs_to :mother
-      t.belongs_to :father
+      t.string :contact_numbers
+      t.string :whatsapp_number
 
       t.timestamps
     end

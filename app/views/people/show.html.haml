@@ -18,15 +18,16 @@
 %p
   %b Deathdate:
   = @person.death_date
-- if @person.mother
-  %p
-    %b Mother:
-    = @person.mother.name
-- if @person.father
-  %p
-    %b Father:
-    = @person.father.name
-
+%p
+  %b Contact Numbers:
+  = @person.contact_numbers
+%p
+  %b Whatsapp Number:
+  = @person.whatsapp_number
+%b Family Tree
+%hr
+= render_tree @person
+%hr
 
 = link_to 'Edit', edit_person_path(@person)
 \|

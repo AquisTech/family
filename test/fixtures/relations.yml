@@ -6,7 +6,5 @@
 #
 one:
   name: 'father'
-  inverse_name: 'son'
 two:
   name: 'husband'
-  inverse_name: 'wife'

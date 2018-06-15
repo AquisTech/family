@@ -10,24 +10,10 @@
       %th
 
   %tbody
-    - [@person.mother, @person.father].compact.each do |parent|
-      %tr
-        %td= parent.gender == 'Male' ? 'Father' : 'Mother'
-        %td= link_to parent.name, person_path(parent)
-        %td
-        %td
-        %td
-    - @person.children.each do |person|
-      %tr
-        %td= person.gender == 'Male' ? 'Son' : 'Daughter'
-        %td= link_to person.name, person_path(person)
-        %td
-        %td
-        %td
     - @relationships.each do |relationship|
       %tr
         %td= relationship.applicable_relation_name(@person)
-        %td= link_to relationship.relative_of(@person).name, person_path(relationship.relative_of(@person))
+        %td= link_to relationship.related_person.name, person_path(relationship.related_person)
         %td= link_to 'Show Relationship', person_relationship_path(@person, relationship)
         %td= link_to 'Edit Relationship', edit_person_relationship_path(@person, relationship)
         %td= link_to 'Remove Relationship', person_relationship_path(@person, relationship), :confirm => 'Are you sure?', :method => :delete

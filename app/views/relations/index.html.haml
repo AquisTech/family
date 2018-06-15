@@ -13,7 +13,6 @@
     - @relations.each do |relation|
       %tr
         %td= relation.name
-        %td= relation.inverse_name
         %td= link_to 'Show', relation
         %td= link_to 'Edit', edit_relation_path(relation)
         %td= link_to 'Destroy', relation, method: :delete, data: { confirm: 'Are you sure?' }

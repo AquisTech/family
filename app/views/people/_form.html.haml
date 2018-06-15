@@ -24,10 +24,10 @@
     = f.label :death_date
     = f.date_field :death_date
   .field
-    = f.label :mother
-    = f.collection_select :mother_id, Person.where(gender: 'Female').where.not(id: @person.id), :id, :name, include_blank: true # TODO: gender
+    = f.label :contact_numbers
+    = f.text_field :contact_numbers
   .field
-    = f.label :father
-    = f.collection_select :father_id, Person.where(gender: 'Male').where.not(id: @person.id), :id, :name, include_blank: true
+    = f.label :whatsapp_number
+    = f.text_field :whatsapp_number
   .actions
     = f.submit 'Save'

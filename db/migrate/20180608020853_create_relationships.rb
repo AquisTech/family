@@ -1,8 +1,8 @@
 class CreateRelationships < ActiveRecord::Migration[5.2]
   def change
     create_table :relationships do |t|
-      t.belongs_to :relation
       t.belongs_to :person
+      t.belongs_to :relation
       t.belongs_to :related_person
 
       t.timestamps

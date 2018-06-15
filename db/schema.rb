@@ -19,24 +19,21 @@ ActiveRecord::Schema.define(version: 2018_06_08_020853) do
     t.datetime "birth_date"
     t.datetime "death_date"
     t.string "gender"
-    t.integer "mother_id"
-    t.integer "father_id"
+    t.string "contact_numbers"
+    t.string "whatsapp_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["father_id"], name: "index_people_on_father_id"
-    t.index ["mother_id"], name: "index_people_on_mother_id"
   end
 
   create_table "relations", force: :cascade do |t|
     t.string "name"
-    t.string "inverse_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "relation_id"
     t.integer "person_id"
+    t.integer "relation_id"
     t.integer "related_person_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
