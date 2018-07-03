@@ -12,18 +12,138 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
 .person_details {
   border-radius: 5px;
   background: lightskyblue;
   padding: 5px;
-  width: fit-content;
+  width: max-content;
   margin: 0 auto;
 }
-
 .person_tree {
   text-align: center;
   padding: 5px;
-  display: inline-block;
+  display: table-cell;
   vertical-align: top;
+}
+.family_tree_container {
+  overflow-x: scroll;
+  width: 1440px;
+}
+
+
+.multilevel-accordion-menu .is-accordion-submenu-parent a {
+  background: #4d5158;
+}
+
+.multilevel-accordion-menu .is-accordion-submenu a {
+  background: #35383d;
+}
+
+.multilevel-accordion-menu .sublevel-1 {
+  text-indent: 2rem;
+}
+.multilevel-accordion-menu .sublevel-2 {
+  text-indent: 4rem;
+}
+.multilevel-accordion-menu .sublevel-3 {
+  text-indent: 6rem;
+}
+.multilevel-accordion-menu .sublevel-4 {
+  text-indent: 8rem;
+}
+.multilevel-accordion-menu .sublevel-5 {
+  text-indent: 10rem;
+}
+.multilevel-accordion-menu .sublevel-6 {
+  text-indent: 12rem;
+}
+.multilevel-accordion-menu .sublevel-7 {
+  text-indent: 14rem;
+}
+.multilevel-accordion-menu .sublevel-8 {
+  text-indent: 16rem;
+}
+.multilevel-accordion-menu .sublevel-9 {
+  text-indent: 18rem;
+}
+.multilevel-accordion-menu .sublevel-10 {
+  text-indent: 20rem;
+}
+.multilevel-accordion-menu .sublevel-11 {
+  text-indent: 22rem;
+}
+.multilevel-accordion-menu .sublevel-12 {
+  text-indent: 24rem;
+}
+.multilevel-accordion-menu .sublevel-13 {
+  text-indent: 26rem;
+}
+.multilevel-accordion-menu .sublevel-14 {
+  text-indent: 28rem;
+}
+.multilevel-accordion-menu .sublevel-15 {
+  text-indent: 30rem;
+}
+
+.multilevel-accordion-menu a {
+  color: #fefefe;
+  box-shadow: inset 0 -1px #41444a;
+}
+
+.multilevel-accordion-menu a::after {
+  border-color: #fefefe transparent transparent;
+}
+
+.multilevel-accordion-menu .menu > li:not(.menu-text) > a {
+  padding: 1.2rem 1rem;
+}
+
+/*.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a.subitem::before {
+  content: "\25B2";
+  font-family: FontAwesome;
+  margin-right: 1rem;
+}*/
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="false"] a::before {
+  content: "L";
+  /*font-family: FontAwesome;*/
+  margin-right: 1rem;
+}
+
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a::before {
+  content: "T";
+  /*font-family: FontAwesome;*/
+  margin-right: 1rem;
+}
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="false"] a.subitem::before {
+  content: "L";
+  /*font-family: FontAwesome;*/
+  margin-right: 1rem;
+}
+
+.multilevel-accordion-menu .is-accordion-submenu-parent[aria-expanded="true"] a.subitem::before {
+  content: "T";
+  /*font-family: FontAwesome;*/
+  margin-right: 1rem;
+}
+
+.is-accordion-submenu-parent > a {
+  position: relative;
+}
+
+.is-accordion-submenu-parent > a::after {
+  border: inset 6px;
+  content: '';
+  border-bottom-width: 0;
+  border-top-style: solid;
+  border-color: #ffffff transparent transparent;
+  position: absolute;
+  right: 1rem;
+}
+
+.is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
 }
