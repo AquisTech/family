@@ -5,7 +5,9 @@ sibling = Relation.where(name: 'sibling').first_or_create!
 
 def relate(person, relation, related_person)
   person.relationships.where(relation_id: relation.id, related_person_id: related_person.id).first_or_create!
+  puts "#{person.name} is #{relation.name} of #{related_person.name}"
   related_person.relationships.where(relation_id: relation.id, related_person_id: person.id).first_or_create!
+  puts "#{related_person.name} is #{relation.name} of #{person.name}"
 end
 
 def add_child(father, mother, child)
@@ -59,7 +61,7 @@ child = Person.where(name: 'Son Aagre', birth_date: '2018-05-30', gender: 'Male'
 add_child(pramod, unknown, child)
 sunil = Person.where(name: 'Sunil Aagre', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(govind, sunanda, sunil)
-unknown = Person.where(name: 'Unknown Aagre', birth_date: '2018-05-30', gender: 'Female').first_or_create!
+unknown = Person.where(name: 'SunilWife Aagre', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 relate(sunil, spouce, unknown)
 child = Person.where(name: 'Daughter1 Aagre', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 add_child(sunil, unknown, child)
@@ -79,7 +81,7 @@ add_child(yogesh, aarya, viraj)
 amit = Person.where(name: 'Amit Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(bhai, vaish, amit)
 
-# lalita
+## lalita
 
 ashok = Person.where(name: 'Ashok Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(aappa, indira, ashok)
@@ -87,9 +89,9 @@ rohini = Person.where(name: 'Amita Bandbe', maiden_name: 'Rohini Peje', birth_da
 relate(ashok, spouce, rohini)
 aniket = Person.where(name: 'Aniket Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(ashok, rohini, aniket)
-komal = Person.where(name: 'Brahmi Bandbe', maiden_name: 'Komal Dafle', birth_date: '2018-05-30', gender: 'Female').first_or_create!
+komal = Person.where(name: 'Bramhi Bandbe', maiden_name: 'Komal Dafle', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 relate(aniket, spouce, komal)
-nidhish = Person.where(name: 'Aniket Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
+nidhish = Person.where(name: 'Nidhish Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(aniket, komal, nidhish)
 virja = Person.where(name: 'Virja Sawant', maiden_name: 'Virja Bandbe', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 add_child(ashok, rohini, virja)
@@ -102,7 +104,9 @@ add_child(virja, unknown, chaitanya)
 
 pakya = Person.where(name: 'Prakash Bandbe', nickname: 'Pakya', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(aappa, indira, pakya)
-# TODO: Add prathamesh his wife and prachi her husband and child
+prajoti = Person.where(name: 'Prajoti Bandbe', birth_date: '2018-05-30', gender: 'Female').first_or_create!
+relate(pakya, spouce, prajoti)
+## TODO: Add prathamesh his wife and prachi her husband and child
 
 gotya = Person.where(name: 'Girish Bandbe', nickname: 'Gotya', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(aappa, indira, gotya)
@@ -115,7 +119,10 @@ harish = Person.where(name: 'Harish Bandbe', birth_date: '2018-05-30', gender: '
 relate(suma, spouce, harish)
 pannu = Person.where(name: 'Mayuri Khanolkar', maiden_name: 'Mayuri Samant', nickname: 'Pannu', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 add_child(suma, harish, pannu)
-# TODO: Add jiju and meera
+harshad = Person.where(name: 'Harshad Khanolkar', birth_date: '2018-05-30', gender: 'Male').first_or_create!
+relate(pannu, spouce, harshad)
+meera = Person.where(name: 'Meera Khanolkar', birth_date: '2018-05-30', gender: 'Female').first_or_create!
+add_child(pannu, harshad, meera)
 gauri = Person.where(name: 'Gauri Lele', maiden_name: 'Gauri Samant', birth_date: '2018-05-30', gender: 'Female').first_or_create!
 add_child(suma, harish, gauri)
 gaurav = Person.where(name: 'Gaurav Lele', birth_date: '2018-05-30', gender: 'Male').first_or_create!
@@ -201,11 +208,11 @@ arun = Person.where(name: 'Arun Bait', birth_date: '2018-05-30', gender: 'Male')
 relate(arun, spouce, uma)
 anand = Person.where(name: 'Anand Bait', birth_date: '1990-02-21', gender: 'Male').first_or_create!
 add_child(arun, uma, anand)
-mayuri = Person.where(name: 'Mayuri Bait', maiden_name: 'Mayuri Pachpande', birth_date: '1993-05-30', gender: 'Female').first_or_create!
-relate(anand, spouce, mayuri)
-swati = Person.where(name: 'Swati Bait', birth_date: '1992-01-31', gender: 'Female').first_or_create!
+swati = Person.where(name: 'Swati Mengane', maiden_name: 'Swati Bait', birth_date: '1992-01-31', gender: 'Female').first_or_create!
 add_child(arun, uma, swati)
 relate(anand, sibling, swati)
+sagar = Person.where(name: 'Sagar Mengane', birth_date: '1989-11-11', gender: 'Male').first_or_create!
+relate(swati, spouce, sagar)
 
 arun_mama = Person.where(name: 'Arun Bandbe', birth_date: '2018-05-30', gender: 'Male').first_or_create!
 add_child(aaba, amma, arun_mama)
